@@ -159,9 +159,19 @@ func testLogo() {
 
 ## Related Packages
 
-- [swift-svg-types](https://github.com/coenttb/swift-svg-types): A Swift package with foundational types for SVG.
+### Dependencies
+
 - [swift-svg-printer](https://github.com/coenttb/swift-svg-printer): A Swift package for rendering SVG to String or bytes.
+- [swift-svg-types](https://github.com/coenttb/swift-svg-types): A Swift package with foundational types for SVG.
+
+### Used By
+
+- [coenttb-com-server](https://github.com/coenttb/coenttb-com-server): Production server for coenttb.com built with Boiler.
 - [swift-html](https://github.com/coenttb/swift-html): The Swift library for domain-accurate and type-safe HTML & CSS.
+
+### Third-Party Dependencies
+
+- [pointfreeco/swift-snapshot-testing](https://github.com/pointfreeco/swift-snapshot-testing): Delightful snapshot testing for Swift.
 
 ## Contributing
 
