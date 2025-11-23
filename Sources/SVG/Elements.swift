@@ -17,7 +17,14 @@ public func circle(
     r: Double? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
 ) -> Element<W3C_SVG2.Shapes.Circle> {
-    Element(W3C_SVG2.Shapes.Circle(cx: cx, cy: cy, r: r), content: content())
+    Element(
+        W3C_SVG2.Shapes.Circle(
+            cx: cx,
+            cy: cy,
+            r: r
+        ),
+        content: content()
+    )
 }
 
 /// Creates an SVG rectangle element.
@@ -30,7 +37,17 @@ public func rect(
     ry: Double? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
 ) -> Element<W3C_SVG2.Shapes.Rectangle> {
-    Element(W3C_SVG2.Shapes.Rectangle(x: x, y: y, width: width, height: height, rx: rx, ry: ry), content: content())
+    Element(
+        W3C_SVG2.Shapes.Rectangle(
+            x: x,
+            y: y,
+            width: width,
+            height: height,
+            rx: rx,
+            ry: ry
+        ),
+        content: content()
+    )
 }
 
 /// Creates an SVG ellipse element.
@@ -41,7 +58,15 @@ public func ellipse(
     ry: Double? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
 ) -> Element<W3C_SVG2.Shapes.Ellipse> {
-    Element(W3C_SVG2.Shapes.Ellipse(cx: cx, cy: cy, rx: rx, ry: ry), content: content())
+    Element(
+        W3C_SVG2.Shapes.Ellipse(
+            cx: cx,
+            cy: cy,
+            rx: rx,
+            ry: ry
+        ),
+        content: content()
+    )
 }
 
 /// Creates an SVG line element.
@@ -52,7 +77,15 @@ public func line(
     y2: Double? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
 ) -> Element<W3C_SVG2.Shapes.Line> {
-    Element(W3C_SVG2.Shapes.Line(x1: x1, y1: y1, x2: x2, y2: y2), content: content())
+    Element(
+        W3C_SVG2.Shapes.Line(
+            x1: x1,
+            y1: y1,
+            x2: x2,
+            y2: y2
+        ),
+        content: content()
+    )
 }
 
 public func line2(
@@ -62,7 +95,15 @@ public func line2(
     y2: Double? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
 ) -> Element<W3C_SVG2.Shapes.Line> {
-    Element(W3C_SVG2.Shapes.Line(x1: x1, y1: y1, x2: x2, y2: y2), content: content())
+    Element(
+        W3C_SVG2.Shapes.Line(
+            x1: x1,
+            y1: y1,
+            x2: x2,
+            y2: y2
+        ),
+        content: content()
+    )
 }
 
 /// Creates an SVG polygon element.
@@ -70,7 +111,10 @@ public func polygon(
     points: String? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
 ) -> Element<W3C_SVG2.Shapes.Polygon> {
-    Element(W3C_SVG2.Shapes.Polygon(points: points), content: content())
+    Element(
+        W3C_SVG2.Shapes.Polygon(points: points),
+        content: content()
+    )
 }
 
 /// Creates an SVG polygon element from coordinates.
@@ -78,7 +122,10 @@ public func polygon(
     coordinates: [(Double, Double)],
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
 ) -> Element<W3C_SVG2.Shapes.Polygon> {
-    Element(W3C_SVG2.Shapes.Polygon(coordinates: coordinates), content: content())
+    Element(
+        W3C_SVG2.Shapes.Polygon(coordinates: coordinates),
+        content: content()
+    )
 }
 
 /// Creates an SVG polyline element.
@@ -86,7 +133,10 @@ public func polyline(
     points: String? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
 ) -> Element<W3C_SVG2.Shapes.Polyline> {
-    Element(W3C_SVG2.Shapes.Polyline(points: points), content: content())
+    Element(
+        W3C_SVG2.Shapes.Polyline(points: points),
+        content: content()
+    )
 }
 
 /// Creates an SVG polyline element from coordinates.
@@ -94,7 +144,10 @@ public func polyline(
     coordinates: [(Double, Double)],
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
 ) -> Element<W3C_SVG2.Shapes.Polyline> {
-    Element(W3C_SVG2.Shapes.Polyline(coordinates: coordinates), content: content())
+    Element(
+        W3C_SVG2.Shapes.Polyline(coordinates: coordinates),
+        content: content()
+    )
 }
 
 // MARK: - Path
@@ -105,7 +158,13 @@ public func path(
     fillRule: W3C_SVG2.Painting.FillRule? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
 ) -> Element<W3C_SVG2.Paths.Path> {
-    Element(W3C_SVG2.Paths.Path(d: d, fillRule: fillRule), content: content())
+    Element(
+        W3C_SVG2.Paths.Path(
+            d: d,
+            fillRule: fillRule
+        ),
+        content: content()
+    )
 }
 
 // MARK: - Text
@@ -141,7 +200,13 @@ public func tspan(
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
 ) -> Element<W3C_SVG2.Text.TSpan> {
     Element(
-        W3C_SVG2.Text.TSpan(x: x, y: y, dx: dx, dy: dy, content: text),
+        W3C_SVG2.Text.TSpan(
+            x: x,
+            y: y,
+            dx: dx,
+            dy: dy,
+            content: text
+        ),
         content: content()
     )
 }
@@ -153,7 +218,10 @@ public func g(
     id: String? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
 ) -> Element<W3C_SVG2.Document.Group> {
-    Element(W3C_SVG2.Document.Group(id: id), content: content())
+    Element(
+        W3C_SVG2.Document.Group(id: id),
+        content: content()
+    )
 }
 
 /// Creates an SVG root element.
@@ -183,7 +251,13 @@ public func svg(
     height: Double,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
 ) -> Element<W3C_SVG2.Document.SVG> {
-    Element(W3C_SVG2.Document.SVG(width: .number(width), height: .number(height)), content: content())
+    Element(
+        W3C_SVG2.Document.SVG(
+            width: .number(width),
+            height: .number(height)
+        ),
+        content: content()
+    )
 }
 
 /// Creates an SVG root element with simple string viewBox.
@@ -193,7 +267,10 @@ public func svg(
 ) -> Element<W3C_SVG2.Document.SVG> {
     let components = viewBox.split(separator: " ").compactMap { Double($0) }
     guard components.count == 4 else {
-        return Element(W3C_SVG2.Document.SVG(), content: content())
+        return Element(
+            W3C_SVG2.Document.SVG(),
+            content: content()
+        )
     }
     let vb = W3C_SVG2.Types.ViewBox(
         minX: components[0],
@@ -201,14 +278,20 @@ public func svg(
         width: components[2],
         height: components[3]
     )
-    return Element(W3C_SVG2.Document.SVG(viewBox: vb), content: content())
+    return Element(
+        W3C_SVG2.Document.SVG(viewBox: vb),
+        content: content()
+    )
 }
 
 /// Creates an SVG defs element.
 public func defs(
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
 ) -> Element<W3C_SVG2.Document.Defs> {
-    Element(W3C_SVG2.Document.Defs(), content: content())
+    Element(
+        W3C_SVG2.Document.Defs(),
+        content: content()
+    )
 }
 
 /// Creates an SVG symbol element.
@@ -249,7 +332,16 @@ public func use(
     height: Double? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
 ) -> Element<W3C_SVG2.Document.Use> {
-    Element(W3C_SVG2.Document.Use(href: href, x: x, y: y, width: width, height: height), content: content())
+    Element(
+        W3C_SVG2.Document.Use(
+            href: href,
+            x: x,
+            y: y,
+            width: width,
+            height: height
+        ),
+        content: content()
+    )
 }
 
 // MARK: - Clipping and Masking
@@ -260,7 +352,13 @@ public func clipPath(
     clipPathUnits: W3C_SVG2.Painting.ClipPath.ClipPathUnits? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
 ) -> Element<W3C_SVG2.Painting.ClipPath> {
-    Element(W3C_SVG2.Painting.ClipPath(id: id, clipPathUnits: clipPathUnits), content: content())
+    Element(
+        W3C_SVG2.Painting.ClipPath(
+            id: id,
+            clipPathUnits: clipPathUnits
+        ),
+        content: content()
+    )
 }
 
 /// Creates an SVG mask element.
@@ -360,7 +458,11 @@ public func stop(
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
 ) -> Element<W3C_SVG2.PaintServers.Stop> {
     Element(
-        W3C_SVG2.PaintServers.Stop(offset: offset, stopColor: stopColor, stopOpacity: stopOpacity),
+        W3C_SVG2.PaintServers.Stop(
+            offset: offset,
+            stopColor: stopColor,
+            stopOpacity: stopOpacity
+        ),
         content: content()
     )
 }
@@ -460,12 +562,23 @@ public func foreignObject(
     height: Double? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
 ) -> Element<W3C_SVG2.Embedded.ForeignObject> {
-    Element(W3C_SVG2.Embedded.ForeignObject(x: x, y: y, width: width, height: height), content: content())
+    Element(
+        W3C_SVG2.Embedded.ForeignObject(
+            x: x,
+            y: y,
+            width: width,
+            height: height
+        ),
+        content: content()
+    )
 }
 
 /// Creates an SVG switch element.
 public func svgSwitch(
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
 ) -> Element<W3C_SVG2.Scripting.Switch> {
-    Element(W3C_SVG2.Scripting.Switch(), content: content())
+    Element(
+        W3C_SVG2.Scripting.Switch(),
+        content: content()
+    )
 }
