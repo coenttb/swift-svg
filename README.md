@@ -162,7 +162,7 @@ func testLogo() {
 ### Dependencies
 
 - [swift-svg-printer](https://github.com/coenttb/swift-svg-printer): A Swift package for rendering SVG to String or bytes.
-- [swift-svg-types](https://github.com/coenttb/swift-svg-types): A Swift package with foundational types for SVG.
+- [swift-svg-standard](https://github.com/swift-standard/swift-svg-standard): A Swift package with foundational types for SVG.
 
 ### Used By
 

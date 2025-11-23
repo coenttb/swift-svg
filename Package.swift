@@ -1,14 +1,14 @@
-// swift-tools-version: 6.0
+// swift-tools-version: 6.2
 
 import PackageDescription
 
 let package = Package(
     name: "swift-svg",
     platforms: [
-        .macOS(.v14),
-        .iOS(.v17),
-        .tvOS(.v17),
-        .watchOS(.v10),
+        .macOS(.v15),
+        .iOS(.v18),
+        .tvOS(.v18),
+        .watchOS(.v11),
     ],
     products: [
         .library(
@@ -21,15 +21,15 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/coenttb/swift-svg-types", from: "0.1.0"),
-        .package(url: "https://github.com/coenttb/swift-svg-printer", from: "0.1.0"),
+        .package(path: "../../swift-standards/swift-svg-standard"),
+        .package(path: "../swift-svg-printer"),
         .package(url: "https://github.com/pointfreeco/swift-snapshot-testing.git", from: "1.18.3"),
     ],
     targets: [
         .target(
             name: "SVG",
             dependencies: [
-                .product(name: "SVGTypes", package: "swift-svg-types"),
+                .product(name: "SVG Standard", package: "swift-svg-standard"),
                 .product(name: "SVGPrinter", package: "swift-svg-printer"),
             ]
         ),

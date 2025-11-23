@@ -7,7 +7,7 @@
 
 import OrderedCollections
 import SVG
-import SVGTypes
+import SVG_Standard
 import Testing
 
 @testable import SVG

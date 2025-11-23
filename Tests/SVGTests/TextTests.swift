@@ -6,7 +6,7 @@
 //
 
 import SVG
-import SVGTypes
+import SVG_Standard
 import Testing
 
 @Suite("Text Elements Tests")

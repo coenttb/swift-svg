@@ -9,7 +9,7 @@ import Dependencies
 import Foundation
 import SVG
 import SVGPrinter
-import SVGTypes
+import SVG_Standard
 import Testing
 
 @Suite("Debug")

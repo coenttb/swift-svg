@@ -8,7 +8,7 @@
 import InlineSnapshotTesting
 import SVG
 import SVGTestSupport
-import SVGTypes
+import SVG_Standard
 import Testing
 
 @Suite(

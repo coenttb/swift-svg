@@ -7,4 +7,4 @@
 
 @_exported import SVGPrinter
 // Re-export everything from the underlying packages
-@_exported import SVGTypes
+@_exported import SVG_Standard
