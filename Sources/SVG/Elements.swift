@@ -16,9 +16,9 @@ public func circle(
     cy: Double? = nil,
     r: Double? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
-) -> Element<W3C_SVG2.Shapes.Circle> {
+) -> Element<SVG_Standard.Shapes.Circle> {
     Element(
-        W3C_SVG2.Shapes.Circle(
+        SVG_Standard.Shapes.Circle(
             cx: cx,
             cy: cy,
             r: r
@@ -36,9 +36,9 @@ public func rect(
     rx: Double? = nil,
     ry: Double? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
-) -> Element<W3C_SVG2.Shapes.Rectangle> {
+) -> Element<SVG_Standard.Shapes.Rectangle> {
     Element(
-        W3C_SVG2.Shapes.Rectangle(
+        SVG_Standard.Shapes.Rectangle(
             x: x,
             y: y,
             width: width,
@@ -57,9 +57,9 @@ public func ellipse(
     rx: Double? = nil,
     ry: Double? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
-) -> Element<W3C_SVG2.Shapes.Ellipse> {
+) -> Element<SVG_Standard.Shapes.Ellipse> {
     Element(
-        W3C_SVG2.Shapes.Ellipse(
+        SVG_Standard.Shapes.Ellipse(
             cx: cx,
             cy: cy,
             rx: rx,
@@ -76,9 +76,9 @@ public func line(
     x2: Double? = nil,
     y2: Double? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
-) -> Element<W3C_SVG2.Shapes.Line> {
+) -> Element<SVG_Standard.Shapes.Line> {
     Element(
-        W3C_SVG2.Shapes.Line(
+        SVG_Standard.Shapes.Line(
             x1: x1,
             y1: y1,
             x2: x2,
@@ -94,9 +94,9 @@ public func line2(
     x2: Double? = nil,
     y2: Double? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
-) -> Element<W3C_SVG2.Shapes.Line> {
+) -> Element<SVG_Standard.Shapes.Line> {
     Element(
-        W3C_SVG2.Shapes.Line(
+        SVG_Standard.Shapes.Line(
             x1: x1,
             y1: y1,
             x2: x2,
@@ -110,9 +110,9 @@ public func line2(
 public func polygon(
     points: String? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
-) -> Element<W3C_SVG2.Shapes.Polygon> {
+) -> Element<SVG_Standard.Shapes.Polygon> {
     Element(
-        W3C_SVG2.Shapes.Polygon(points: points),
+        SVG_Standard.Shapes.Polygon(points: points),
         content: content()
     )
 }
@@ -121,9 +121,9 @@ public func polygon(
 public func polygon(
     coordinates: [(Double, Double)],
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
-) -> Element<W3C_SVG2.Shapes.Polygon> {
+) -> Element<SVG_Standard.Shapes.Polygon> {
     Element(
-        W3C_SVG2.Shapes.Polygon(coordinates: coordinates),
+        SVG_Standard.Shapes.Polygon(coordinates: coordinates),
         content: content()
     )
 }
@@ -132,9 +132,9 @@ public func polygon(
 public func polyline(
     points: String? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
-) -> Element<W3C_SVG2.Shapes.Polyline> {
+) -> Element<SVG_Standard.Shapes.Polyline> {
     Element(
-        W3C_SVG2.Shapes.Polyline(points: points),
+        SVG_Standard.Shapes.Polyline(points: points),
         content: content()
     )
 }
@@ -143,9 +143,9 @@ public func polyline(
 public func polyline(
     coordinates: [(Double, Double)],
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
-) -> Element<W3C_SVG2.Shapes.Polyline> {
+) -> Element<SVG_Standard.Shapes.Polyline> {
     Element(
-        W3C_SVG2.Shapes.Polyline(coordinates: coordinates),
+        SVG_Standard.Shapes.Polyline(coordinates: coordinates),
         content: content()
     )
 }
@@ -155,11 +155,11 @@ public func polyline(
 /// Creates an SVG path element.
 public func path(
     d: String? = nil,
-    fillRule: W3C_SVG2.Painting.FillRule? = nil,
+    fillRule: SVG_Standard.Painting.FillRule? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
-) -> Element<W3C_SVG2.Paths.Path> {
+) -> Element<SVG_Standard.Paths.Path> {
     Element(
-        W3C_SVG2.Paths.Path(
+        SVG_Standard.Paths.Path(
             d: d,
             fillRule: fillRule
         ),
@@ -177,9 +177,9 @@ public func text(
     dx: Double? = nil,
     dy: Double? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
-) -> Element<W3C_SVG2.Text.Text> {
+) -> Element<SVG_Standard.Text.Text> {
     Element(
-        W3C_SVG2.Text.Text(
+        SVG_Standard.Text.Text(
             x: x,
             y: y,
             dx: dx,
@@ -198,9 +198,9 @@ public func tspan(
     dx: Double? = nil,
     dy: Double? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
-) -> Element<W3C_SVG2.Text.TSpan> {
+) -> Element<SVG_Standard.Text.TSpan> {
     Element(
-        W3C_SVG2.Text.TSpan(
+        SVG_Standard.Text.TSpan(
             x: x,
             y: y,
             dx: dx,
@@ -217,24 +217,24 @@ public func tspan(
 public func g(
     id: String? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
-) -> Element<W3C_SVG2.Document.Group> {
+) -> Element<SVG_Standard.Document.Group> {
     Element(
-        W3C_SVG2.Document.Group(id: id),
+        SVG_Standard.Document.Group(id: id),
         content: content()
     )
 }
 
 /// Creates an SVG root element.
 public func svg(
-    x: W3C_SVG2.Types.Length? = nil,
-    y: W3C_SVG2.Types.Length? = nil,
-    width: W3C_SVG2.Types.Length? = nil,
-    height: W3C_SVG2.Types.Length? = nil,
-    viewBox: W3C_SVG2.Types.ViewBox? = nil,
+    x: SVG_Standard.Types.Length? = nil,
+    y: SVG_Standard.Types.Length? = nil,
+    width: SVG_Standard.Types.Length? = nil,
+    height: SVG_Standard.Types.Length? = nil,
+    viewBox: SVG_Standard.Types.ViewBox? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
-) -> Element<W3C_SVG2.Document.SVG> {
+) -> Element<SVG_Standard.Document.SVG> {
     Element(
-        W3C_SVG2.Document.SVG(
+        SVG_Standard.Document.SVG(
             x: x,
             y: y,
             width: width,
@@ -250,9 +250,9 @@ public func svg(
     width: Double,
     height: Double,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
-) -> Element<W3C_SVG2.Document.SVG> {
+) -> Element<SVG_Standard.Document.SVG> {
     Element(
-        W3C_SVG2.Document.SVG(
+        SVG_Standard.Document.SVG(
             width: .number(width),
             height: .number(height)
         ),
@@ -264,22 +264,22 @@ public func svg(
 public func svg(
     viewBox: String,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
-) -> Element<W3C_SVG2.Document.SVG> {
+) -> Element<SVG_Standard.Document.SVG> {
     let components = viewBox.split(separator: " ").compactMap { Double($0) }
     guard components.count == 4 else {
         return Element(
-            W3C_SVG2.Document.SVG(),
+            SVG_Standard.Document.SVG(),
             content: content()
         )
     }
-    let vb = W3C_SVG2.Types.ViewBox(
+    let vb = SVG_Standard.Types.ViewBox(
         minX: components[0],
         minY: components[1],
         width: components[2],
         height: components[3]
     )
     return Element(
-        W3C_SVG2.Document.SVG(viewBox: vb),
+        SVG_Standard.Document.SVG(viewBox: vb),
         content: content()
     )
 }
@@ -287,9 +287,9 @@ public func svg(
 /// Creates an SVG defs element.
 public func defs(
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
-) -> Element<W3C_SVG2.Document.Defs> {
+) -> Element<SVG_Standard.Document.Defs> {
     Element(
-        W3C_SVG2.Document.Defs(),
+        SVG_Standard.Document.Defs(),
         content: content()
     )
 }
@@ -301,14 +301,14 @@ public func symbol(
     y: Double? = nil,
     width: Double? = nil,
     height: Double? = nil,
-    viewBox: W3C_SVG2.Types.ViewBox? = nil,
+    viewBox: SVG_Standard.Types.ViewBox? = nil,
     refX: Double? = nil,
     refY: Double? = nil,
     preserveAspectRatio: String? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
-) -> Element<W3C_SVG2.Document.Symbol> {
+) -> Element<SVG_Standard.Document.Symbol> {
     Element(
-        W3C_SVG2.Document.Symbol(
+        SVG_Standard.Document.Symbol(
             id: id,
             x: x,
             y: y,
@@ -331,9 +331,9 @@ public func use(
     width: Double? = nil,
     height: Double? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
-) -> Element<W3C_SVG2.Document.Use> {
+) -> Element<SVG_Standard.Document.Use> {
     Element(
-        W3C_SVG2.Document.Use(
+        SVG_Standard.Document.Use(
             href: href,
             x: x,
             y: y,
@@ -349,11 +349,11 @@ public func use(
 /// Creates an SVG clipPath element.
 public func clipPath(
     id: String? = nil,
-    clipPathUnits: W3C_SVG2.Painting.ClipPath.ClipPathUnits? = nil,
+    clipPathUnits: SVG_Standard.Painting.ClipPath.ClipPathUnits? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
-) -> Element<W3C_SVG2.Painting.ClipPath> {
+) -> Element<SVG_Standard.Painting.ClipPath> {
     Element(
-        W3C_SVG2.Painting.ClipPath(
+        SVG_Standard.Painting.ClipPath(
             id: id,
             clipPathUnits: clipPathUnits
         ),
@@ -368,12 +368,12 @@ public func mask(
     y: Double? = nil,
     width: Double? = nil,
     height: Double? = nil,
-    maskUnits: W3C_SVG2.Painting.Mask.MaskUnits? = nil,
-    maskContentUnits: W3C_SVG2.Painting.Mask.MaskUnits? = nil,
+    maskUnits: SVG_Standard.Painting.Mask.MaskUnits? = nil,
+    maskContentUnits: SVG_Standard.Painting.Mask.MaskUnits? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
-) -> Element<W3C_SVG2.Painting.Mask> {
+) -> Element<SVG_Standard.Painting.Mask> {
     Element(
-        W3C_SVG2.Painting.Mask(
+        SVG_Standard.Painting.Mask(
             id: id,
             x: x,
             y: y,
@@ -396,13 +396,13 @@ public func linearGradient(
     x2: String? = nil,
     y2: String? = nil,
     href: String? = nil,
-    gradientUnits: W3C_SVG2.PaintServers.LinearGradient.GradientUnits? = nil,
+    gradientUnits: SVG_Standard.PaintServers.LinearGradient.GradientUnits? = nil,
     gradientTransform: String? = nil,
-    spreadMethod: W3C_SVG2.PaintServers.LinearGradient.SpreadMethod? = nil,
+    spreadMethod: SVG_Standard.PaintServers.LinearGradient.SpreadMethod? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
-) -> Element<W3C_SVG2.PaintServers.LinearGradient> {
+) -> Element<SVG_Standard.PaintServers.LinearGradient> {
     Element(
-        W3C_SVG2.PaintServers.LinearGradient(
+        SVG_Standard.PaintServers.LinearGradient(
             id: id,
             x1: x1,
             y1: y1,
@@ -427,13 +427,13 @@ public func radialGradient(
     fy: String? = nil,
     fr: String? = nil,
     href: String? = nil,
-    gradientUnits: W3C_SVG2.PaintServers.RadialGradient.GradientUnits? = nil,
+    gradientUnits: SVG_Standard.PaintServers.RadialGradient.GradientUnits? = nil,
     gradientTransform: String? = nil,
-    spreadMethod: W3C_SVG2.PaintServers.RadialGradient.SpreadMethod? = nil,
+    spreadMethod: SVG_Standard.PaintServers.RadialGradient.SpreadMethod? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
-) -> Element<W3C_SVG2.PaintServers.RadialGradient> {
+) -> Element<SVG_Standard.PaintServers.RadialGradient> {
     Element(
-        W3C_SVG2.PaintServers.RadialGradient(
+        SVG_Standard.PaintServers.RadialGradient(
             id: id,
             cx: cx,
             cy: cy,
@@ -456,9 +456,9 @@ public func stop(
     stopColor: String? = nil,
     stopOpacity: Double? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
-) -> Element<W3C_SVG2.PaintServers.Stop> {
+) -> Element<SVG_Standard.PaintServers.Stop> {
     Element(
-        W3C_SVG2.PaintServers.Stop(
+        SVG_Standard.PaintServers.Stop(
             offset: offset,
             stopColor: stopColor,
             stopOpacity: stopOpacity
@@ -474,16 +474,16 @@ public func pattern(
     y: Double? = nil,
     width: Double? = nil,
     height: Double? = nil,
-    viewBox: W3C_SVG2.Types.ViewBox? = nil,
+    viewBox: SVG_Standard.Types.ViewBox? = nil,
     href: String? = nil,
-    patternUnits: W3C_SVG2.PaintServers.Pattern.PatternUnits? = nil,
-    patternContentUnits: W3C_SVG2.PaintServers.Pattern.PatternUnits? = nil,
+    patternUnits: SVG_Standard.PaintServers.Pattern.PatternUnits? = nil,
+    patternContentUnits: SVG_Standard.PaintServers.Pattern.PatternUnits? = nil,
     patternTransform: String? = nil,
     preserveAspectRatio: String? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
-) -> Element<W3C_SVG2.PaintServers.Pattern> {
+) -> Element<SVG_Standard.PaintServers.Pattern> {
     Element(
-        W3C_SVG2.PaintServers.Pattern(
+        SVG_Standard.PaintServers.Pattern(
             id: id,
             x: x,
             y: y,
@@ -511,9 +511,9 @@ public func image(
     href: String? = nil,
     preserveAspectRatio: String? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
-) -> Element<W3C_SVG2.Embedded.Image> {
+) -> Element<SVG_Standard.Embedded.Image> {
     Element(
-        W3C_SVG2.Embedded.Image(
+        SVG_Standard.Embedded.Image(
             x: x,
             y: y,
             width: width,
@@ -528,18 +528,18 @@ public func image(
 /// Creates an SVG marker element.
 public func marker(
     id: String? = nil,
-    viewBox: W3C_SVG2.Types.ViewBox? = nil,
+    viewBox: SVG_Standard.Types.ViewBox? = nil,
     refX: Double? = nil,
     refY: Double? = nil,
     markerWidth: Double? = nil,
     markerHeight: Double? = nil,
     orient: String? = nil,
-    markerUnits: W3C_SVG2.Painting.Marker.MarkerUnits? = nil,
+    markerUnits: SVG_Standard.Painting.Marker.MarkerUnits? = nil,
     preserveAspectRatio: String? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
-) -> Element<W3C_SVG2.Painting.Marker> {
+) -> Element<SVG_Standard.Painting.Marker> {
     Element(
-        W3C_SVG2.Painting.Marker(
+        SVG_Standard.Painting.Marker(
             id: id,
             viewBox: viewBox,
             refX: refX,
@@ -561,9 +561,9 @@ public func foreignObject(
     width: Double? = nil,
     height: Double? = nil,
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
-) -> Element<W3C_SVG2.Embedded.ForeignObject> {
+) -> Element<SVG_Standard.Embedded.ForeignObject> {
     Element(
-        W3C_SVG2.Embedded.ForeignObject(
+        SVG_Standard.Embedded.ForeignObject(
             x: x,
             y: y,
             width: width,
@@ -576,9 +576,9 @@ public func foreignObject(
 /// Creates an SVG switch element.
 public func svgSwitch(
     @SVGBuilder content: () -> some SVG = { SVGEmpty() }
-) -> Element<W3C_SVG2.Scripting.Switch> {
+) -> Element<SVG_Standard.Scripting.Switch> {
     Element(
-        W3C_SVG2.Scripting.Switch(),
+        SVG_Standard.Scripting.Switch(),
         content: content()
     )
 }

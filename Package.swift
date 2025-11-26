@@ -21,8 +21,8 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(path: "../../swift-standards/swift-svg-standard"),
-        .package(path: "../swift-svg-printer"),
+        .package(url: "https://github.com/swift-standards/swift-svg-standard.git", from: "0.1.0"),
+        .package(url: "https://github.com/coenttb/swift-svg-printer.git", from: "0.1.0"),
         .package(url: "https://github.com/pointfreeco/swift-snapshot-testing.git", from: "1.18.3"),
     ],
     targets: [

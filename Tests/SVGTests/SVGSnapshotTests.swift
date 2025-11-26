@@ -451,7 +451,7 @@ struct SVGSnapshotTests {
             of: Document.test(
                 width: 400,
                 height: 300,
-                viewBox: SVGViewBox(width: 400, height: 300)
+                viewBox: .init(width: 400, height: 300)
             ) {
                 defs {
                     linearGradient(id: "bg-gradient", x1: "0%", y1: "0%", x2: "100%", y2: "100%") {

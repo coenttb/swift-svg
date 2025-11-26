@@ -48,14 +48,14 @@ extension Document {
     public static func test(
         width: Int? = nil,
         height: Int? = nil,
-        viewBox: W3C_SVG2.Types.ViewBox? = nil,
+        viewBox: SVG_Standard.Types.ViewBox? = nil,
         includeXMLDeclaration: Bool = false,
         @SVGBuilder content: () -> some SVG
     ) -> Document {
         Document(includeXMLDeclaration: includeXMLDeclaration) {
             svg(
-                width: width.map { W3C_SVG2.Types.Length.number(Double($0)) },
-                height: height.map { W3C_SVG2.Types.Length.number(Double($0)) },
+                width: width.map { SVG_Standard.Types.Length.number(Double($0)) },
+                height: height.map { SVG_Standard.Types.Length.number(Double($0)) },
                 viewBox: viewBox
             ) {
                 content()
