@@ -30,14 +30,14 @@ extension Snapshotting where Value: SVG.View, Format == String {
 
 /// Creates a complete SVG element for snapshot testing
 public func testSVG<C: SVG.View>(
-    width: Int? = nil,
-    height: Int? = nil,
+    width: Double? = nil,
+    height: Double? = nil,
     viewBox: SVG_Standard.Types.ViewBox? = nil,
     @SVG.Builder content: () -> C
-) -> SVG.Element<SVG_Standard.Document.SVG, C> {
+) -> some SVG.View {
     svg(
-        width: width.map { SVG_Standard.Types.Length.number(Double($0)) },
-        height: height.map { SVG_Standard.Types.Length.number(Double($0)) },
+        width: width,
+        height: height,
         viewBox: viewBox,
         content: content
     )

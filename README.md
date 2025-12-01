@@ -137,7 +137,7 @@ swift-svg includes snapshot testing support via SVGTestSupport:
 ```swift
 import Testing
 import SVG
-import SVGTestSupport
+import SVG_TestSupport
 
 @Test
 func testLogo() {

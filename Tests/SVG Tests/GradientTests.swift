@@ -21,9 +21,8 @@ struct GradientTests {
                     stop(offset: "100%", stopColor: "rgb(255,0,0)", stopOpacity: 1)
                 }
             }
-            ellipse(cx: 200, cy: 70, rx: 85, ry: 55) {
-                fill("url(#grad1)")
-            }
+            ellipse(cx: 200, cy: 70, rx: 85, ry: 55)
+                .fill("url(#grad1)")
         }
 
         let rendered = svgElement.render()
@@ -49,9 +48,8 @@ struct GradientTests {
                     stop(offset: "100%", stopColor: "blue")
                 }
             }
-            circle(cx: 100, cy: 100, r: 80) {
-                fill("url(#grad2)")
-            }
+            circle(cx: 100, cy: 100, r: 80)
+                .fill("url(#grad2)")
         }
 
         let rendered = svgElement.render()

@@ -22,18 +22,16 @@ struct ReadmeVerificationTests {
                 }
             }
 
-            circle(cx: 100, cy: 100, r: 80) {
-                fill("url(#gradient)")
-                stroke("#333")
-                strokeWidth(2)
-            }
+            circle(cx: 100, cy: 100, r: 80)
+                .fill("url(#gradient)")
+                .stroke("#333")
+                .strokeWidth(2)
 
-            text("Swift", x: 100, y: 105) {
-                fontSize(24)
-                fontFamily("system-ui, sans-serif")
-                textAnchor("middle")
-                fill("white")
-            }
+            text("Swift", x: 100, y: 105)
+                .fontSize(24)
+                .fontFamily("system-ui, sans-serif")
+                .textAnchor("middle")
+                .fill("white")
         }
 
         let svgString = logo.render()
@@ -48,14 +46,12 @@ struct ReadmeVerificationTests {
 
     @Test("Quick Start example from README line 62-74")
     func quickStartExample() {
-        let icon = svg(viewBox: "0 0 24 24") {
-            path(d: "M12 2L2 7l10 5 10-5-10-5z") {
-                fill("currentColor")
-            }
-            path(d: "M2 17l10 5 10-5-10-5z") {
-                fill("currentColor")
-                opacity(0.7)
-            }
+        let icon = svg(viewBox: .init(minX: 0, minY: 0, width: 24, height: 24)) {
+            path(d: "M12 2L2 7l10 5 10-5-10-5z")
+                .fill("currentColor")
+            path(d: "M2 17l10 5 10-5-10-5z")
+                .fill("currentColor")
+                .opacity(0.7)
         }
 
         let svgString = icon.render()
@@ -71,15 +67,14 @@ struct ReadmeVerificationTests {
     @Test("Basic shapes example from README line 82-96")
     func basicShapesExample() {
         let basicShapes = svg(width: 200, height: 200) {
-            circle(cx: 50, cy: 50, r: 40) {
-                fill("red")
-                stroke("black", width: 2)
-            }
+            circle(cx: 50, cy: 50, r: 40)
+                .fill("red")
+                .stroke("black")
+                .strokeWidth(2)
 
-            rect(x: 100, y: 10, width: 80, height: 60, rx: 5) {
-                fill("blue")
-                opacity(0.5)
-            }
+            rect(x: 100, y: 10, width: 80, height: 60, rx: 5)
+                .fill("blue")
+                .opacity(0.5)
         }
 
         let output = basicShapes.render()
@@ -111,9 +106,8 @@ struct ReadmeVerificationTests {
                 }
             }
 
-            circle(cx: 100, cy: 100, r: 80) {
-                fill("url(#myGradient)")
-            }
+            circle(cx: 100, cy: 100, r: 80)
+                .fill("url(#myGradient)")
         }
 
         let output = gradientExample.render()
@@ -137,12 +131,11 @@ struct ReadmeVerificationTests {
     @Test("Text elements example from README line 121-130")
     func textElementsExample() {
         let textExample = svg(width: 200, height: 100) {
-            text("Hello SVG", x: 100, y: 50) {
-                fontSize(24)
-                fontFamily("system-ui, sans-serif")
-                textAnchor("middle")
-                fill("black")
-            }
+            text("Hello SVG", x: 100, y: 50)
+                .fontSize(24)
+                .fontFamily("system-ui, sans-serif")
+                .textAnchor("middle")
+                .fill("black")
         }
 
         let output = textExample.render()
@@ -162,9 +155,8 @@ struct ReadmeVerificationTests {
     @Test("Testing example from README line 143-157")
     func testingExample() {
         let logo = svg(width: 100, height: 100) {
-            circle(cx: 50, cy: 50, r: 45) {
-                fill("blue")
-            }
+            circle(cx: 50, cy: 50, r: 45)
+                .fill("blue")
         }
 
         let output = logo.render()

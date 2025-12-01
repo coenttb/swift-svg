@@ -16,8 +16,8 @@ let package = Package(
             targets: ["SVG"]
         ),
         .library(
-            name: "SVGTestSupport",
-            targets: ["SVGTestSupport"]
+            name: "SVG TestSupport",
+            targets: ["SVG TestSupport"]
         ),
     ],
     dependencies: [
@@ -34,7 +34,7 @@ let package = Package(
             ]
         ),
         .target(
-            name: "SVGTestSupport",
+            name: "SVG TestSupport",
             dependencies: [
                 "SVG",
                 .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
@@ -42,10 +42,10 @@ let package = Package(
             ]
         ),
         .testTarget(
-            name: "SVGTests",
+            name: "SVG Tests",
             dependencies: [
                 "SVG",
-                "SVGTestSupport",
+                "SVG TestSupport",
             ]
         ),
     ]

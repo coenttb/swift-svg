@@ -22,23 +22,11 @@ struct TransformTests {
         #expect(rendered.contains("transform=\"rotate(45)\""))
     }
 
-    @Test("Transform renders correctly using global function")
-    func transformFunctionRendering() {
-        let svgElement = rect(x: 10, y: 10, width: 50, height: 50) {
-            transform("rotate(45)")
-            fill("red")
-        }
-
-        let rendered = svgElement.render()
-        #expect(rendered.contains("transform=\"rotate(45)\""))
-    }
-
     @Test("Translate helper renders correctly")
     func translateRendering() {
-        let svgElement = rect(x: 0, y: 0, width: 30, height: 30) {
-            translate(x: 50, y: 50)
-            fill("blue")
-        }
+        let svgElement = rect(x: 0, y: 0, width: 30, height: 30)
+            .translate(x: 50, y: 50)
+            .fill("blue")
 
         let rendered = svgElement.render()
         #expect(rendered.contains("transform=\"translate(50"))
@@ -46,10 +34,9 @@ struct TransformTests {
 
     @Test("Rotate helper renders correctly")
     func rotateRendering() {
-        let svgElement = rect(x: 0, y: 0, width: 30, height: 30) {
-            rotate(45)
-            fill("green")
-        }
+        let svgElement = rect(x: 0, y: 0, width: 30, height: 30)
+            .rotate(45)
+            .fill("green")
 
         let rendered = svgElement.render()
         #expect(rendered.contains("transform=\"rotate(45)\""))
@@ -67,10 +54,9 @@ struct TransformTests {
 
     @Test("Scale helper renders correctly")
     func scaleRendering() {
-        let svgElement = rect(x: 0, y: 0, width: 30, height: 30) {
-            scale(x: 2)
-            fill("purple")
-        }
+        let svgElement = rect(x: 0, y: 0, width: 30, height: 30)
+            .scale(x: 2)
+            .fill("purple")
 
         let rendered = svgElement.render()
         #expect(rendered.contains("transform=\"scale(2)\""))
@@ -78,9 +64,8 @@ struct TransformTests {
 
     @Test("SkewX helper renders correctly")
     func skewXRendering() {
-        let svgElement = rect(x: 0, y: 0, width: 30, height: 30) {
-            skewX(30)
-        }
+        let svgElement = rect(x: 0, y: 0, width: 30, height: 30)
+            .skewX(30)
 
         let rendered = svgElement.render()
         #expect(rendered.contains("transform=\"skewX(30)\""))
@@ -88,9 +73,8 @@ struct TransformTests {
 
     @Test("SkewY helper renders correctly")
     func skewYRendering() {
-        let svgElement = rect(x: 0, y: 0, width: 30, height: 30) {
-            skewY(30)
-        }
+        let svgElement = rect(x: 0, y: 0, width: 30, height: 30)
+            .skewY(30)
 
         let rendered = svgElement.render()
         #expect(rendered.contains("transform=\"skewY(30)\""))
@@ -99,10 +83,10 @@ struct TransformTests {
     @Test("Transform on group renders correctly")
     func groupTransformRendering() {
         let svgElement = g {
-            transform("scale(1.5)")
             circle(cx: 0, cy: 0, r: 25)
             rect(x: -10, y: -10, width: 20, height: 20)
         }
+        .transform("scale(1.5)")
 
         let rendered = svgElement.render()
         #expect(rendered.contains("transform=\"scale(1.5)\""))

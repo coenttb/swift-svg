@@ -23,10 +23,10 @@ struct DebugTest {
     }
 
     @Test func circleWithAttributesRenders() {
-        let circleElement = circle(cx: 50, cy: 50, r: 40) {
-            fill("red")
-            stroke("black", width: 2)
-        }
+        let circleElement = circle(cx: 50, cy: 50, r: 40)
+            .fill("red")
+            .stroke("black")
+            .strokeWidth(2)
 
         let rendered = circleElement.render()
         print("Circle rendered: '\(rendered)'")
@@ -38,11 +38,11 @@ struct DebugTest {
 
     @Test("Check SVG rendering for consistency")
     func svgRenderingConsistency() {
-        let svgElement = svg(width: .number(100), height: .number(100)) {
-            circle(cx: 50, cy: 50, r: 40) {
-                fill("red")
-                stroke("black", width: 2)
-            }
+        let svgElement = svg(width: 100, height: 100) {
+            circle(cx: 50, cy: 50, r: 40)
+                .fill("red")
+                .stroke("black")
+                .strokeWidth(2)
         }
 
         let output = svgElement.render(.pretty)

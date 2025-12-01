@@ -12,17 +12,11 @@ import Testing
 @Suite("Debug Detailed")
 struct DebugDetailedTest {
     @Test func detailedAttributeFlow() {
-        // Step 1: Test that attribute creates an _Attributes wrapper
-        let fillAttr = fill("red")
-        let fillRendered = fillAttr.render()
-        // The fill attribute alone renders as empty (it's meant to be combined with elements)
-        #expect(fillRendered.isEmpty || fillRendered.contains("fill"))
+        // Test circle with method chaining
+        let circleElement = circle(cx: 50, cy: 50, r: 40)
+            .fill("blue")
+            .stroke("black")
 
-        // Step 2: Test circle with attributes
-        let circleElement = circle(cx: 50, cy: 50, r: 40) {
-            fill("blue")
-            stroke("black")
-        }
         let circleRendered = circleElement.render()
         #expect(circleRendered.contains("<circle"))
         #expect(circleRendered.contains("fill=\"blue\""))
@@ -31,10 +25,11 @@ struct DebugDetailedTest {
         #expect(circleRendered.contains("cy=\"50"))
         #expect(circleRendered.contains("r=\"40"))
 
-        // Step 3: Full circle with attributes using method chaining
+        // Full circle with attributes using method chaining
         let chainedCircle = circle(cx: 50, cy: 50, r: 40)
             .fill("green")
-            .stroke("red", width: 2)
+            .stroke("red")
+            .strokeWidth(2)
         let chainedResult = chainedCircle.render()
         #expect(chainedResult.contains("fill=\"green\""))
         #expect(chainedResult.contains("stroke=\"red\""))
