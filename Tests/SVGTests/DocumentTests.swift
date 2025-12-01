@@ -12,34 +12,30 @@ import Testing
 @Suite("Document Tests")
 struct DocumentTests {
 
-    @Test("Document with XML declaration renders correctly")
-    func documentWithXMLDeclaration() {
-        let doc = Document(includeXMLDeclaration: true) {
-            svg(width: 100, height: 100) {
-                circle(cx: 50, cy: 50, r: 40)
-            }
+    @Test("SVG element renders with dimensions")
+    func svgWithDimensions() {
+        let svgElement = svg(width: 100, height: 100) {
+            circle(cx: 50, cy: 50, r: 40)
         }
 
-        let rendered = doc.render()
-        #expect(rendered.starts(with: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"))
+        let rendered = svgElement.render()
         #expect(rendered.contains("<svg"))
+        #expect(rendered.contains("width=\"100\""))
+        #expect(rendered.contains("height=\"100\""))
         #expect(rendered.contains("<circle"))
+        #expect(rendered.contains("</svg>"))
     }
 
-    @Test("Document with DOCTYPE renders correctly")
-    func documentWithDOCTYPE() {
-        let doc = Document(includeXMLDeclaration: true, includeDOCTYPE: true) {
-            svg(width: 100, height: 100) {
-                rect(x: 10, y: 10, width: 80, height: 80)
-            }
+    @Test("SVG with nested elements renders correctly")
+    func svgWithNestedElements() {
+        let svgElement = svg(width: 100, height: 100) {
+            rect(x: 10, y: 10, width: 80, height: 80)
         }
 
-        let rendered = doc.render()
-        #expect(rendered.contains("<?xml version=\"1.0\" encoding=\"UTF-8\"?>"))
-        #expect(rendered.contains("<!DOCTYPE svg PUBLIC"))
-        #expect(rendered.contains("svg11.dtd"))
+        let rendered = svgElement.render()
         #expect(rendered.contains("<svg"))
         #expect(rendered.contains("<rect"))
+        #expect(rendered.contains("</svg>"))
     }
 
     @Test("Pretty printing works correctly")

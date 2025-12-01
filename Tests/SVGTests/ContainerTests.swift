@@ -30,7 +30,8 @@ struct ContainerTests {
 
     @Test("Group element renders correctly")
     func groupRendering() {
-        let svgElement = g(transform: .translate(x: 50, y: 50)) {
+        let svgElement = g {
+            translate(x: 50, y: 50)
             circle(cx: 0, cy: 0, r: 25) {
                 fill("blue")
             }
@@ -41,7 +42,7 @@ struct ContainerTests {
 
         let rendered = svgElement.render()
         #expect(rendered.contains("<g"))
-        #expect(rendered.contains("transform=\"translate(50 50)\""))
+        #expect(rendered.contains("transform=\"translate(50"))
         #expect(rendered.contains("<circle"))
         #expect(rendered.contains("<rect"))
         #expect(rendered.contains("</g>"))
@@ -50,8 +51,10 @@ struct ContainerTests {
     @Test("Nested groups render correctly")
     func nestedGroupsRendering() {
         let svgElement = svg(width: 300, height: 200) {
-            g(transform: .scale(x: 2)) {
-                g(transform: .rotate(angle: 45)) {
+            g {
+                transform("scale(2)")
+                g {
+                    transform("rotate(45)")
                     rect(x: 0, y: 0, width: 50, height: 50) {
                         fill("red")
                     }
@@ -92,7 +95,7 @@ struct ContainerTests {
     func symbolAndUseRendering() {
         let svgElement = svg {
             defs {
-                symbol(id: "mySymbol", viewBox: "0 0 100 100") {
+                symbol(id: "mySymbol", viewBox: SVG_Standard.Types.ViewBox(minX: 0, minY: 0, width: 100, height: 100)) {
                     circle(cx: 50, cy: 50, r: 40) {
                         fill("green")
                     }

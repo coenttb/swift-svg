@@ -79,7 +79,7 @@ struct GradientTests {
         }
 
         let rendered = svgElement.render()
-        #expect(rendered.contains("spread-method=\"reflect\""))
+        #expect(rendered.contains("spreadMethod=\"reflect\""))
     }
 
     @Test("Gradient transform renders correctly")
@@ -93,6 +93,6 @@ struct GradientTests {
         }
 
         let rendered = svgElement.render()
-        #expect(rendered.contains("gradient-transform=\"rotate(45)\""))
+        #expect(rendered.contains("gradientTransform=\"rotate(45)\""))
     }
 }

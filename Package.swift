@@ -21,9 +21,8 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/swift-standards/swift-svg-standard.git", from: "0.1.0"),
-        .package(url: "https://github.com/coenttb/swift-svg-printer.git", from: "0.1.0"),
-        .package(url: "https://github.com/coenttb/swift-svg-renderable.git", from: "0.1.0"),
+        .package(url: "https://github.com/swift-standards/swift-svg-standard", from: "0.1.0"),
+        .package(url: "https://github.com/coenttb/swift-svg-renderable", from: "0.1.0"),
         .package(url: "https://github.com/pointfreeco/swift-snapshot-testing.git", from: "1.18.3"),
     ],
     targets: [
@@ -31,7 +30,6 @@ let package = Package(
             name: "SVG",
             dependencies: [
                 .product(name: "SVG Standard", package: "swift-svg-standard"),
-                .product(name: "SVGPrinter", package: "swift-svg-printer"),
                 .product(name: "SVG Renderable", package: "swift-svg-renderable"),
             ]
         ),
@@ -52,20 +50,11 @@ let package = Package(
         ),
     ]
 )
-
-let swiftSettings: [SwiftSetting] = [
-    .enableUpcomingFeature("MemberImportVisibility"),
-    .enableUpcomingFeature("StrictUnsafe"),
-    .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
-//    .unsafeFlags(["-warnings-as-errors"]),
-    // .unsafeFlags([
-    //   "-Xfrontend",
-    //   "-warn-long-function-bodies=50",
-    //   "-Xfrontend",
-    //   "-warn-long-expression-type-checking=50",
-    // ])
-]
-
-for index in package.targets.indices {
-    package.targets[index].swiftSettings = (package.targets[index].swiftSettings ?? []) + swiftSettings
+for target in package.targets where ![.system, .binary, .plugin].contains(target.type) {
+    let existing = target.swiftSettings ?? []
+    target.swiftSettings = existing + [
+        .enableUpcomingFeature("ExistentialAny"),
+        .enableUpcomingFeature("InternalImportsByDefault"),
+        .enableUpcomingFeature("MemberImportVisibility")
+    ]
 }

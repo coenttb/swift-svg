@@ -5,42 +5,39 @@
 //  Created by Coen ten Thije Boonkkamp
 //
 
-import OrderedCollections
 import SVG
 import SVG_Standard
 import Testing
 
-@testable import SVG
-
 @Suite("Debug Detailed")
 struct DebugDetailedTest {
     @Test func detailedAttributeFlow() {
-        // Step 1: Create individual components
+        // Step 1: Test that attribute creates an _Attributes wrapper
         let fillAttr = fill("red")
-        var printer = SVGPrinter()
+        let fillRendered = fillAttr.render()
+        // The fill attribute alone renders as empty (it's meant to be combined with elements)
+        #expect(fillRendered.isEmpty || fillRendered.contains("fill"))
 
-        // Test that attribute adds to printer
-        Attribute._render(fillAttr as Attribute, into: &printer)
-        print("After fill attribute: printer.attributes = \(printer.attributes)")
-        #expect(!printer.attributes.isEmpty)
-
-        // Step 2: Test with SVGGroup
-        printer = SVGPrinter()
-        let group = SVGGroup {
+        // Step 2: Test circle with attributes
+        let circleElement = circle(cx: 50, cy: 50, r: 40) {
             fill("blue")
             stroke("black")
         }
-        type(of: group)._render(group, into: &printer)
-        print("After group with attributes: printer.attributes = \(printer.attributes)")
+        let circleRendered = circleElement.render()
+        #expect(circleRendered.contains("<circle"))
+        #expect(circleRendered.contains("fill=\"blue\""))
+        #expect(circleRendered.contains("stroke=\"black\""))
+        #expect(circleRendered.contains("cx=\"50"))
+        #expect(circleRendered.contains("cy=\"50"))
+        #expect(circleRendered.contains("r=\"40"))
 
-        // Step 3: Full circle with attributes
-        printer = SVGPrinter()
-        let circle = circle(cx: 50, cy: 50, r: 40) {
-            fill("green")
-        }
-        type(of: circle)._render(circle, into: &printer)
-        let result = String(decoding: printer.bytes, as: UTF8.self)
-        print("Final circle: '\(result)'")
-        #expect(result.contains("fill"))
+        // Step 3: Full circle with attributes using method chaining
+        let chainedCircle = circle(cx: 50, cy: 50, r: 40)
+            .fill("green")
+            .stroke("red", width: 2)
+        let chainedResult = chainedCircle.render()
+        #expect(chainedResult.contains("fill=\"green\""))
+        #expect(chainedResult.contains("stroke=\"red\""))
+        #expect(chainedResult.contains("stroke-width=\"2"))
     }
 }

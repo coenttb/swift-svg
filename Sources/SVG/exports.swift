@@ -5,6 +5,6 @@
 //  Created by Coen ten Thije Boonkkamp
 //
 
-@_exported import SVGPrinter
 // Re-export everything from the underlying packages
+@_exported import SVG_Renderable
 @_exported import SVG_Standard

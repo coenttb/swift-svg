@@ -48,11 +48,11 @@ struct TextTests {
         #expect(rendered.contains("</text>"))
     }
 
-    @Test("Text rotation renders correctly")
+    @Test("Text with rotate attribute renders correctly")
     func textRotationRendering() {
-        let svgElement = text("Rotated", x: 100, y: 100, rotate: "0 15 30 45 60") {
-            fill("purple")
-        }
+        let svgElement = text("Rotated", x: 100, y: 100)
+            .attribute("rotate", "0 15 30 45 60")
+            .fill("purple")
 
         let rendered = svgElement.render()
         #expect(rendered.contains("rotate=\"0 15 30 45 60\""))

@@ -22,13 +22,13 @@ struct SVGSnapshotTests {
     @Test("Circle element snapshot")
     func circleSnapshot() {
         assertInlineSnapshot(
-            of: Document.test(width: 100, height: 100) {
+            of: testSVG(width: 100, height: 100) {
                 circle(cx: 50, cy: 50, r: 40) {
                     fill("red")
                     stroke("black", width: 2)
                 }
             },
-            as: .svgDocument
+            as: .svg
         ) {
             """
             <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
@@ -41,13 +41,13 @@ struct SVGSnapshotTests {
     @Test("Rectangle element snapshot")
     func rectangleSnapshot() {
         assertInlineSnapshot(
-            of: Document.test(width: 120, height: 80) {
+            of: testSVG(width: 120, height: 80) {
                 rect(x: 10, y: 10, width: 100, height: 60, rx: 5, ry: 5) {
                     fill("blue")
                     opacity(0.7)
                 }
             },
-            as: .svgDocument
+            as: .svg
         ) {
             """
             <svg width="120" height="80" xmlns="http://www.w3.org/2000/svg">
@@ -60,14 +60,14 @@ struct SVGSnapshotTests {
     @Test("Ellipse element snapshot")
     func ellipseSnapshot() {
         assertInlineSnapshot(
-            of: Document.test(width: 200, height: 100) {
+            of: testSVG(width: 200, height: 100) {
                 ellipse(cx: 100, cy: 50, rx: 80, ry: 40) {
                     fill("green")
                     strokeWidth(3)
                     stroke("purple")
                 }
             },
-            as: .svgDocument
+            as: .svg
         ) {
             """
             <svg width="200" height="100" xmlns="http://www.w3.org/2000/svg">
@@ -80,14 +80,14 @@ struct SVGSnapshotTests {
     @Test("Line element snapshot")
     func lineSnapshot() {
         assertInlineSnapshot(
-            of: Document.test(width: 200, height: 200) {
+            of: testSVG(width: 200, height: 200) {
                 line(x1: 10, y1: 10, x2: 190, y2: 190) {
                     stroke("red")
                     strokeWidth(2)
-                    strokeDasharray(5, 5)
+                    strokeDasharray("5 5")
                 }
             },
-            as: .svgDocument
+            as: .svg
         ) {
             """
             <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
@@ -100,14 +100,14 @@ struct SVGSnapshotTests {
     @Test("Polygon element snapshot")
     func polygonSnapshot() {
         assertInlineSnapshot(
-            of: Document.test(width: 200, height: 200) {
+            of: testSVG(width: 200, height: 200) {
                 polygon(coordinates: [(100, 10), (40, 198), (190, 78), (10, 78), (160, 198)]) {
                     fill("lime")
                     stroke("purple")
                     strokeWidth(1)
                 }
             },
-            as: .svgDocument
+            as: .svg
         ) {
             """
             <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
@@ -120,7 +120,7 @@ struct SVGSnapshotTests {
     @Test("Polyline element snapshot")
     func polylineSnapshot() {
         assertInlineSnapshot(
-            of: Document.test(width: 200, height: 200) {
+            of: testSVG(width: 200, height: 200) {
                 polyline(coordinates: [
                     (20, 20), (40, 25), (60, 40), (80, 120), (120, 140), (200, 180),
                 ]) {
@@ -129,7 +129,7 @@ struct SVGSnapshotTests {
                     strokeWidth(3)
                 }
             },
-            as: .svgDocument
+            as: .svg
         ) {
             """
             <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
@@ -142,13 +142,13 @@ struct SVGSnapshotTests {
     @Test("Path element snapshot")
     func pathSnapshot() {
         assertInlineSnapshot(
-            of: Document.test(width: 200, height: 200) {
+            of: testSVG(width: 200, height: 200) {
                 path(d: "M 10 10 L 90 10 L 50 80 Z") {
                     fill("orange")
                     stroke("black")
                 }
             },
-            as: .svgDocument
+            as: .svg
         ) {
             """
             <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
@@ -163,7 +163,7 @@ struct SVGSnapshotTests {
     @Test("Group element snapshot")
     func groupSnapshot() {
         assertInlineSnapshot(
-            of: Document.test(width: 200, height: 200) {
+            of: testSVG(width: 200, height: 200) {
                 g {
                     fill("red")
                     opacity(0.5)
@@ -172,7 +172,7 @@ struct SVGSnapshotTests {
                     rect(x: 100, y: 100, width: 80, height: 60)
                 }
             },
-            as: .svgDocument
+            as: .svg
         ) {
             """
             <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" fill="red" opacity="0.5">
@@ -188,9 +188,9 @@ struct SVGSnapshotTests {
     @Test("Nested groups snapshot")
     func nestedGroupsSnapshot() {
         assertInlineSnapshot(
-            of: Document.test(width: 300, height: 200) {
+            of: testSVG(width: 300, height: 200) {
                 g {
-                    transform(.translate(x: 50, y: 50))
+                    transform("translate(50, 50)")
 
                     g {
                         fill("blue")
@@ -200,12 +200,12 @@ struct SVGSnapshotTests {
 
                     g {
                         fill("green")
-                        transform(.rotate(angle: 45))
+                        transform("rotate(45)")
                         rect(x: -15, y: -15, width: 30, height: 30)
                     }
                 }
             },
-            as: .svgDocument
+            as: .svg
         ) {
             """
             <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg" transform="rotate(45)" fill="green">
@@ -228,14 +228,14 @@ struct SVGSnapshotTests {
     @Test("Text element snapshot")
     func textSnapshot() {
         assertInlineSnapshot(
-            of: Document.test(width: 300, height: 100) {
+            of: testSVG(width: 300, height: 100) {
                 text("Hello, SVG!", x: 10, y: 30) {
                     fontFamily("Arial")
                     fontSize(24)
                     fill("black")
                 }
             },
-            as: .svgDocument
+            as: .svg
         ) {
             """
             <svg width="300" height="100" xmlns="http://www.w3.org/2000/svg">
@@ -248,7 +248,7 @@ struct SVGSnapshotTests {
     @Test("Text with tspan snapshot")
     func textWithTspanSnapshot() {
         assertInlineSnapshot(
-            of: Document.test(width: 300, height: 100) {
+            of: testSVG(width: 300, height: 100) {
                 text(x: 10, y: 30) {
                     fontSize(16)
 
@@ -261,7 +261,7 @@ struct SVGSnapshotTests {
                     }
                 }
             },
-            as: .svgDocument
+            as: .svg
         ) {
             """
             <svg width="300" height="100" xmlns="http://www.w3.org/2000/svg" font-size="16">
@@ -280,7 +280,7 @@ struct SVGSnapshotTests {
     @Test("Linear gradient snapshot")
     func linearGradientSnapshot() {
         assertInlineSnapshot(
-            of: Document.test(width: 200, height: 100) {
+            of: testSVG(width: 200, height: 100) {
                 defs {
                     linearGradient(
                         id: "grad1",
@@ -298,7 +298,7 @@ struct SVGSnapshotTests {
                     fill("url(#grad1)")
                 }
             },
-            as: .svgDocument
+            as: .svg
         ) {
             """
             <svg width="200" height="100" xmlns="http://www.w3.org/2000/svg">
@@ -317,7 +317,7 @@ struct SVGSnapshotTests {
     @Test("Radial gradient snapshot")
     func radialGradientSnapshot() {
         assertInlineSnapshot(
-            of: Document.test(width: 200, height: 200) {
+            of: testSVG(width: 200, height: 200) {
                 defs {
                     radialGradient(
                         id: "grad2",
@@ -334,7 +334,7 @@ struct SVGSnapshotTests {
                     fill("url(#grad2)")
                 }
             },
-            as: .svgDocument
+            as: .svg
         ) {
             """
             <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
@@ -355,21 +355,17 @@ struct SVGSnapshotTests {
     @Test("Transform combinations snapshot")
     func transformCombinationsSnapshot() {
         assertInlineSnapshot(
-            of: Document.test(width: 300, height: 300) {
+            of: testSVG(width: 300, height: 300) {
                 rect(x: 50, y: 50, width: 100, height: 100) {
                     fill("red")
-                    transform(
-                        .translate(x: 100, y: 100),
-                        .rotate(angle: 45),
-                        .scale(x: 0.5, y: 0.5)
-                    )
+                    transform("translate(100, 100) rotate(45) scale(0.5, 0.5)")
                 }
             },
-            as: .svgDocument
+            as: .svg
         ) {
             """
             <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-              <rect x="50" y="50" width="100" height="100" fill="red" transform="translate(100 100) rotate(45) scale(0.5 0.5)"></rect>
+              <rect x="50" y="50" width="100" height="100" fill="red" transform="translate(100, 100) rotate(45) scale(0.5, 0.5)"></rect>
             </svg>
             """
         }
@@ -380,7 +376,7 @@ struct SVGSnapshotTests {
     @Test("ClipPath snapshot")
     func clipPathSnapshot() {
         assertInlineSnapshot(
-            of: Document.test(width: 200, height: 200) {
+            of: testSVG(width: 200, height: 200) {
                 defs {
                     clipPath(id: "clip1") {
                         circle(cx: 100, cy: 100, r: 50)
@@ -392,7 +388,7 @@ struct SVGSnapshotTests {
                     clipPath("url(#clip1)")
                 }
             },
-            as: .svgDocument
+            as: .svg
         ) {
             """
             <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
@@ -410,7 +406,7 @@ struct SVGSnapshotTests {
     @Test("Mask snapshot")
     func maskSnapshot() {
         assertInlineSnapshot(
-            of: Document.test(width: 200, height: 200) {
+            of: testSVG(width: 200, height: 200) {
                 defs {
                     mask(id: "mask1") {
                         rect(x: 0, y: 0, width: 200, height: 200) {
@@ -427,7 +423,7 @@ struct SVGSnapshotTests {
                     mask("url(#mask1)")
                 }
             },
-            as: .svgDocument
+            as: .svg
         ) {
             """
             <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
@@ -448,10 +444,10 @@ struct SVGSnapshotTests {
     @Test("Complex SVG composition snapshot")
     func complexCompositionSnapshot() {
         assertInlineSnapshot(
-            of: Document.test(
+            of: testSVG(
                 width: 400,
                 height: 300,
-                viewBox: .init(width: 400, height: 300)
+                viewBox: SVG_Standard.Types.ViewBox(minX: 0, minY: 0, width: 400, height: 300)
             ) {
                 defs {
                     linearGradient(id: "bg-gradient", x1: "0%", y1: "0%", x2: "100%", y2: "100%") {
@@ -475,7 +471,7 @@ struct SVGSnapshotTests {
                 // Clipped group
                 g {
                     clipPath("url(#star-clip)")
-                    transform(.translate(x: 150, y: 100), .scale(x: 2, y: 2))
+                    transform("translate(150, 100) scale(2, 2)")
 
                     rect(x: 0, y: 0, width: 100, height: 100) {
                         fill("yellow")
@@ -490,10 +486,10 @@ struct SVGSnapshotTests {
                     textAnchor("middle")
                 }
             },
-            as: .svgDocument
+            as: .svg
         ) {
             """
-            <svg viewBox="0 0 400 300" width="400" height="300" xmlns="http://www.w3.org/2000/svg" clip-path="url(#star-clip)" transform="translate(150 100) scale(2 2)">
+            <svg viewBox="0 0 400 300" width="400" height="300" xmlns="http://www.w3.org/2000/svg" clip-path="url(#star-clip)" transform="translate(150, 100) scale(2, 2)">
               <defs>
                 <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%" stop-color="#667eea"></stop>
@@ -504,7 +500,7 @@ struct SVGSnapshotTests {
                 </clipPath>
               </defs>
               <rect x="0" y="0" width="400" height="300" fill="url(#bg-gradient)"></rect>
-              <g clip-path="url(#star-clip)" transform="translate(150 100) scale(2 2)">
+              <g clip-path="url(#star-clip)" transform="translate(150, 100) scale(2, 2)">
                 <rect x="0" y="0" width="100" height="100" fill="yellow"></rect>
               </g>
               <text x="200" y="250" font-family="Arial" font-size="24" fill="white" text-anchor="middle">SVG Snapshot Testing</text>
