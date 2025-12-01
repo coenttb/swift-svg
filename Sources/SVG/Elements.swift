@@ -5,7 +5,7 @@
 //  Created by Coen ten Thije Boonkkamp
 //
 
-import SVG_Renderable
+import SVG_Rendering
 import SVG_Standard
 
 // MARK: - Basic Shapes

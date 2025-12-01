@@ -5,10 +5,6 @@ on:
     branches:
       - main
 
-concurrency:
-  group: format-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
   swift_format:
     name: swift-format
@@ -18,23 +14,18 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v5
-        with:
-          ref: ${{ github.head_ref || github.ref_name }}
 
-      - name: Configure git safe directory
-        run: git config --global --add safe.directory /__w/swift-svg/swift-svg
-
-      - name: Restore swift-format cache
-        id: cache-swift-format-restore
-        uses: actions/cache/restore@v4
+      - name: Cache swift-format
+        id: cache-swift-format
+        uses: actions/cache@v4
         with:
           path: /usr/local/bin/swift-format
-          key: ${{ runner.os }}-swift-format-main-v1
+          key: ${{ runner.os }}-swift-format-${{ hashFiles('.github/workflows/swift-format.yml') }}
 
       - name: Install swift-format
-        if: steps.cache-swift-format-restore.outputs.cache-hit != 'true'
+        if: steps.cache-swift-format.outputs.cache-hit != 'true'
         run: |
-          git clone --depth 1 --branch main https://github.com/apple/swift-format.git
+          git clone --depth 1 --branch $(git ls-remote --tags https://github.com/apple/swift-format.git | grep -o 'refs/tags/[0-9]*\.[0-9]*\.[0-9]*$' | sort -V | tail -1 | sed 's/refs\/tags\///') https://github.com/apple/swift-format.git
           cd swift-format
           swift build -c release
           cp .build/release/swift-format /usr/local/bin/
@@ -48,10 +39,3 @@ jobs:
         with:
           commit_message: Run swift-format
           branch: 'main'
-
-      - name: Save swift-format cache
-        uses: actions/cache/save@v4
-        if: steps.cache-swift-format-restore.outputs.cache-hit != 'true'
-        with:
-          path: /usr/local/bin/swift-format
-          key: ${{ runner.os }}-swift-format-main-v1

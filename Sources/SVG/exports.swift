@@ -6,5 +6,5 @@
 //
 
 // Re-export everything from the underlying packages
-@_exported import SVG_Renderable
+@_exported import SVG_Rendering
 @_exported import SVG_Standard

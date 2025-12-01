@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp
 //
 
-import SVG
-import SnapshotTesting
+public import SVG
+public import SnapshotTesting
 
 extension Snapshotting where Value: SVG.View, Format == String {
     /// A snapshot strategy for comparing SVG values as pretty-printed strings

@@ -13,7 +13,7 @@ import Testing
 
 @Suite(
     "SVG Snapshot Tests",
-    .snapshots(record: .never)
+    .snapshots(record: .failed)
 )
 struct SVGSnapshotTests {
 

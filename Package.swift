@@ -22,7 +22,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/swift-standards/swift-svg-standard", from: "0.1.0"),
-        .package(url: "https://github.com/coenttb/swift-svg-renderable", from: "0.1.0"),
+        .package(url: "https://github.com/coenttb/swift-svg-rendering", from: "0.1.0"),
         .package(url: "https://github.com/pointfreeco/swift-snapshot-testing.git", from: "1.18.3"),
     ],
     targets: [
@@ -30,7 +30,7 @@ let package = Package(
             name: "SVG",
             dependencies: [
                 .product(name: "SVG Standard", package: "swift-svg-standard"),
-                .product(name: "SVG Renderable", package: "swift-svg-renderable"),
+                .product(name: "SVG Rendering", package: "swift-svg-rendering"),
             ]
         ),
         .target(

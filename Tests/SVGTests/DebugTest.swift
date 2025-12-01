@@ -7,7 +7,7 @@
 
 import Foundation
 import SVG
-import SVG_Renderable
+import SVG_Rendering
 import SVG_Standard
 import Testing
 
