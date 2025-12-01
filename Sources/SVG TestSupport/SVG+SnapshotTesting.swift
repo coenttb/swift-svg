@@ -17,10 +17,10 @@ extension Snapshotting where Value: SVG.View, Format == String {
     /// A snapshot strategy for comparing SVG values with custom configuration
     /// - Parameter configuration: The context configuration to use
     public static func svg(
-        configuration: SVGContext.Configuration = .pretty
+        configuration: SVG.Context.Configuration = .pretty
     ) -> Self {
         Snapshotting<String, String>.lines.pullback { value in
-            var context = SVGContext(configuration)
+            var context = SVG.Context(configuration)
             var buffer: [UInt8] = []
             Value._render(value, into: &buffer, context: &context)
             return String(decoding: buffer, as: UTF8.self)
