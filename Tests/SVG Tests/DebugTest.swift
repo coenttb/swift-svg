@@ -16,7 +16,7 @@ struct DebugTest {
     @Test func simpleCircleRenders() {
         let svgElement = circle(cx: 50, cy: 50, r: 40)
 
-        let rendered = svgElement.render()
+        let rendered = String(svgElement)
         print("Rendered: '\(rendered)'")
         #expect(!rendered.isEmpty)
         #expect(rendered.contains("<circle"))
@@ -28,7 +28,7 @@ struct DebugTest {
             .stroke("black")
             .strokeWidth(2)
 
-        let rendered = circleElement.render()
+        let rendered = String(circleElement)
         print("Circle rendered: '\(rendered)'")
         #expect(!rendered.isEmpty)
         #expect(rendered.contains("<circle"))
@@ -45,7 +45,7 @@ struct DebugTest {
                 .strokeWidth(2)
         }
 
-        let output = svgElement.render(.pretty)
+        let output = String(svgElement, configuration: .pretty)
         print("Output: [\(output)]")
         print("Length: \(output.count)")
 

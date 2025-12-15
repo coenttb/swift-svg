@@ -7,4 +7,4 @@
 //  in the SVG Rendering package.
 //
 
-public import SVG_Rendering
+import SVG_Rendering

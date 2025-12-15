@@ -17,7 +17,7 @@ struct DebugAttributeTest {
             .stroke("black")
             .strokeWidth(3)
 
-        let rendered = svgElement.render()
+        let rendered = String(svgElement)
         print("With attributes: '\(rendered)'")
         #expect(rendered.contains("fill"))
         #expect(rendered.contains("stroke"))

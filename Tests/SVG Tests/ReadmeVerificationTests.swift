@@ -27,14 +27,14 @@ struct ReadmeVerificationTests {
                 .stroke("#333")
                 .strokeWidth(2)
 
-            text("Swift", x: 100, y: 105)
+            text(x: 100, y: 105) { "Swift" }
                 .fontSize(24)
                 .fontFamily("system-ui, sans-serif")
                 .textAnchor("middle")
                 .fill("white")
         }
 
-        let svgString = logo.render()
+        let svgString = String(logo)
         #expect(svgString.contains("<svg"))
         #expect(svgString.contains("width=\"200\""))
         #expect(svgString.contains("height=\"200\""))
@@ -54,7 +54,7 @@ struct ReadmeVerificationTests {
                 .opacity(0.7)
         }
 
-        let svgString = icon.render()
+        let svgString = String(icon)
         #expect(svgString.contains("<svg"))
         #expect(svgString.contains("viewBox=\"0 0 24 24\""))
         #expect(svgString.contains("<path"))
@@ -77,7 +77,7 @@ struct ReadmeVerificationTests {
                 .opacity(0.5)
         }
 
-        let output = basicShapes.render()
+        let output = String(basicShapes)
         #expect(output.contains("<svg"))
         #expect(output.contains("<circle"))
         #expect(output.contains("cx=\"50\""))
@@ -110,7 +110,7 @@ struct ReadmeVerificationTests {
                 .fill("url(#myGradient)")
         }
 
-        let output = gradientExample.render()
+        let output = String(gradientExample)
         #expect(output.contains("<svg"))
         #expect(output.contains("<defs"))
         #expect(output.contains("linearGradient"))
@@ -131,14 +131,14 @@ struct ReadmeVerificationTests {
     @Test("Text elements example from README line 121-130")
     func textElementsExample() {
         let textExample = svg(width: 200, height: 100) {
-            text("Hello SVG", x: 100, y: 50)
+            text(x: 100, y: 50) { "Hello SVG" }
                 .fontSize(24)
                 .fontFamily("system-ui, sans-serif")
                 .textAnchor("middle")
                 .fill("black")
         }
 
-        let output = textExample.render()
+        let output = String(textExample)
         #expect(output.contains("<svg"))
         #expect(output.contains("width=\"200\""))
         #expect(output.contains("height=\"100\""))
@@ -159,7 +159,7 @@ struct ReadmeVerificationTests {
                 .fill("blue")
         }
 
-        let output = logo.render()
+        let output = String(logo)
         #expect(output.contains("<svg"))
         #expect(output.contains("width=\"100\""))
         #expect(output.contains("height=\"100\""))

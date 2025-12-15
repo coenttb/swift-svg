@@ -19,7 +19,7 @@ struct ContainerTests {
                 .fill("red")
         }
         
-        let rendered = svgElement.render()
+        let rendered = String(svgElement)
         #expect(rendered.contains(#"<svg"#))
         #expect(rendered.contains(#"width="200""#))
         #expect(rendered.contains(#"height="100""#))
@@ -32,7 +32,7 @@ struct ContainerTests {
         let svgElement = g()
             .translate(x: 50, y: 50)
         
-        let rendered = svgElement.render()
+        let rendered = String(svgElement)
         #expect(rendered.contains(#"<g"#))
         #expect(rendered.contains(#"transform="translate(50"#))
         #expect(rendered.contains(#"</g>"#))
@@ -47,7 +47,7 @@ struct ContainerTests {
                 .fill("white")
         }
         
-        let rendered = svgElement.render()
+        let rendered = String(svgElement)
         #expect(rendered.contains(#"<g"#))
         #expect(rendered.contains(#"<circle"#))
         #expect(rendered.contains(#"<rect"#))
@@ -61,7 +61,7 @@ struct ContainerTests {
                 .transform("scale(2)")
         }
         
-        let rendered = svgElement.render()
+        let rendered = String(svgElement)
         #expect(rendered.contains(#"transform="scale(2)""#))
     }
     
@@ -78,7 +78,7 @@ struct ContainerTests {
                 .fill("url(#myGradient)")
         }
         
-        let rendered = svgElement.render()
+        let rendered = String(svgElement)
         #expect(rendered.contains(#"<defs>"#))
         #expect(rendered.contains(#"<linearGradient"#))
         #expect(rendered.contains(#"id="myGradient""#))
@@ -99,7 +99,7 @@ struct ContainerTests {
             use(href: "#mySymbol", x: 10, y: 10, width: 100, height: 100)
         }
         
-        let rendered = svgElement.render()
+        let rendered = String(svgElement)
         #expect(rendered.contains("<symbol"))
         #expect(rendered.contains("id=\"mySymbol\""))
         #expect(rendered.contains("viewBox=\"0 0 100 100\""))

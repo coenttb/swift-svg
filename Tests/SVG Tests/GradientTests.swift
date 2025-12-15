@@ -25,7 +25,7 @@ struct GradientTests {
                 .fill("url(#grad1)")
         }
 
-        let rendered = svgElement.render()
+        let rendered = String(svgElement)
         #expect(rendered.contains("<linearGradient"))
         #expect(rendered.contains("id=\"grad1\""))
         #expect(rendered.contains("x1=\"0%\""))
@@ -52,7 +52,7 @@ struct GradientTests {
                 .fill("url(#grad2)")
         }
 
-        let rendered = svgElement.render()
+        let rendered = String(svgElement)
         #expect(rendered.contains("<radialGradient"))
         #expect(rendered.contains("id=\"grad2\""))
         #expect(rendered.contains("cx=\"50%\""))
@@ -76,7 +76,7 @@ struct GradientTests {
             stop(offset: "100%", stopColor: "blue")
         }
 
-        let rendered = svgElement.render()
+        let rendered = String(svgElement)
         #expect(rendered.contains("spreadMethod=\"reflect\""))
     }
 
@@ -90,7 +90,7 @@ struct GradientTests {
             stop(offset: "100%", stopColor: "white")
         }
 
-        let rendered = svgElement.render()
+        let rendered = String(svgElement)
         #expect(rendered.contains("gradientTransform=\"rotate(45)\""))
     }
 }

@@ -18,7 +18,7 @@ struct DocumentTests {
             circle(cx: 50, cy: 50, r: 40)
         }
 
-        let rendered = svgElement.render()
+        let rendered = String(svgElement)
         #expect(rendered.contains("<svg"))
         #expect(rendered.contains("width=\"100\""))
         #expect(rendered.contains("height=\"100\""))
@@ -32,7 +32,7 @@ struct DocumentTests {
             rect(x: 10, y: 10, width: 80, height: 80)
         }
 
-        let rendered = svgElement.render()
+        let rendered = String(svgElement)
         #expect(rendered.contains("<svg"))
         #expect(rendered.contains("<rect"))
         #expect(rendered.contains("</svg>"))
@@ -47,7 +47,7 @@ struct DocumentTests {
             }
         }
 
-        let rendered = svgElement.render(.pretty)
+        let rendered = String(svgElement, configuration: .pretty)
         #expect(rendered.contains("\n"))
         #expect(rendered.contains("  "))  // Indentation
     }
@@ -58,7 +58,7 @@ struct DocumentTests {
             circle(cx: 50, cy: 50, r: 40)
         }
 
-        let rendered = svgElement.render(.default)
+        let rendered = String(svgElement)
         #expect(!rendered.contains("\n"))
     }
 }

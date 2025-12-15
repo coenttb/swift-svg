@@ -17,7 +17,7 @@ struct DebugDetailedTest {
             .fill("blue")
             .stroke("black")
 
-        let circleRendered = circleElement.render()
+        let circleRendered = String(circleElement)
         #expect(circleRendered.contains("<circle"))
         #expect(circleRendered.contains("fill=\"blue\""))
         #expect(circleRendered.contains("stroke=\"black\""))
@@ -30,7 +30,7 @@ struct DebugDetailedTest {
             .fill("green")
             .stroke("red")
             .strokeWidth(2)
-        let chainedResult = chainedCircle.render()
+        let chainedResult = String(chainedCircle)
         #expect(chainedResult.contains("fill=\"green\""))
         #expect(chainedResult.contains("stroke=\"red\""))
         #expect(chainedResult.contains("stroke-width=\"2"))

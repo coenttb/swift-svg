@@ -18,7 +18,7 @@ struct TransformTests {
             .transform("rotate(45)")
             .fill("red")
 
-        let rendered = svgElement.render()
+        let rendered = String(svgElement)
         #expect(rendered.contains("transform=\"rotate(45)\""))
     }
 
@@ -28,7 +28,7 @@ struct TransformTests {
             .translate(x: 50, y: 50)
             .fill("blue")
 
-        let rendered = svgElement.render()
+        let rendered = String(svgElement)
         #expect(rendered.contains("transform=\"translate(50"))
     }
 
@@ -38,7 +38,7 @@ struct TransformTests {
             .rotate(45)
             .fill("green")
 
-        let rendered = svgElement.render()
+        let rendered = String(svgElement)
         #expect(rendered.contains("transform=\"rotate(45)\""))
     }
 
@@ -47,7 +47,7 @@ struct TransformTests {
         let svgElement = rect(x: 0, y: 0, width: 30, height: 30)
             .rotate(45, cx: 50, cy: 50)
 
-        let rendered = svgElement.render()
+        let rendered = String(svgElement)
         #expect(rendered.contains("rotate(45"))
         #expect(rendered.contains("50"))
     }
@@ -58,7 +58,7 @@ struct TransformTests {
             .scale(x: 2)
             .fill("purple")
 
-        let rendered = svgElement.render()
+        let rendered = String(svgElement)
         #expect(rendered.contains("transform=\"scale(2)\""))
     }
 
@@ -67,7 +67,7 @@ struct TransformTests {
         let svgElement = rect(x: 0, y: 0, width: 30, height: 30)
             .skewX(30)
 
-        let rendered = svgElement.render()
+        let rendered = String(svgElement)
         #expect(rendered.contains("transform=\"skewX(30)\""))
     }
 
@@ -76,7 +76,7 @@ struct TransformTests {
         let svgElement = rect(x: 0, y: 0, width: 30, height: 30)
             .skewY(30)
 
-        let rendered = svgElement.render()
+        let rendered = String(svgElement)
         #expect(rendered.contains("transform=\"skewY(30)\""))
     }
 
@@ -88,7 +88,7 @@ struct TransformTests {
         }
         .transform("scale(1.5)")
 
-        let rendered = svgElement.render()
+        let rendered = String(svgElement)
         #expect(rendered.contains("transform=\"scale(1.5)\""))
         #expect(rendered.contains("<circle"))
         #expect(rendered.contains("<rect"))

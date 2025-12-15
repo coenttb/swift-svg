@@ -236,10 +236,12 @@ struct SVGSnapshotTests {
     func textSnapshot() {
         assertInlineSnapshot(
             of: testSVG(width: 300, height: 100) {
-                text("Hello, SVG!", x: 10, y: 30)
-                    .fontFamily("Arial")
-                    .fontSize(24)
-                    .fill("black")
+                text(x: 10, y: 30) {
+                    "Hello, SVG!"
+                }
+                .fontFamily("Arial")
+                .fontSize(24)
+                .fill("black")
             },
             as: .svg
         ) {
@@ -257,11 +259,15 @@ struct SVGSnapshotTests {
         assertInlineSnapshot(
             of: testSVG(width: 300, height: 100) {
                 text(x: 10, y: 30) {
-                    tspan("First line")
-                    tspan("Second line", x: 10, dy: 20)
-                        .fill("red")
-                    tspan("Third line", x: 10, dy: 20)
-                        .fontWeight("bold")
+                    tspan { "First line" }
+                    tspan(x: 10, dy: 20) {
+                        "Second line"
+                    }
+                    .fill("red")
+                    tspan(x: 10, dy: 20) {
+                        "Third line"
+                    }
+                    .fontWeight("bold")
                 }
                 .fontSize(16)
             },
@@ -488,11 +494,13 @@ struct SVGSnapshotTests {
                 .transform("translate(150, 100) scale(2, 2)")
 
                 // Text overlay
-                text("SVG Snapshot Testing", x: 200, y: 250)
-                    .fontFamily("Arial")
-                    .fontSize(24)
-                    .fill("white")
-                    .textAnchor("middle")
+                text(x: 200, y: 250) {
+                    "SVG Snapshot Testing"
+                }
+                .fontFamily("Arial")
+                .fontSize(24)
+                .fill("white")
+                .textAnchor("middle")
             },
             as: .svg
         ) {

@@ -19,7 +19,7 @@ struct BasicShapesTests {
             .stroke("black")
             .strokeWidth(3)
 
-        let rendered = svg.render()
+        let rendered = String(svg)
         #expect(rendered.contains(#"<circle"#))
         #expect(rendered.contains(#"cx="50""#))
         #expect(rendered.contains(#"cy="50""#))
@@ -36,7 +36,7 @@ struct BasicShapesTests {
             .fill("blue")
             .opacity(0.5)
 
-        let rendered = svg.render()
+        let rendered = String(svg)
         #expect(rendered.contains(#"<rect"#))
         #expect(rendered.contains(#"x="10""#))
         #expect(rendered.contains(#"y="20""#))
@@ -53,7 +53,7 @@ struct BasicShapesTests {
         let svg = ellipse(cx: 100, cy: 50, rx: 80, ry: 40)
             .fill("green")
 
-        let rendered = svg.render()
+        let rendered = String(svg)
         #expect(rendered.contains(#"<ellipse"#))
         #expect(rendered.contains(#"cx="100""#))
         #expect(rendered.contains(#"cy="50""#))
@@ -69,7 +69,7 @@ struct BasicShapesTests {
             .stroke("red")
             .strokeWidth(2)
 
-        let rendered = svg.render()
+        let rendered = String(svg)
         #expect(rendered.contains(#"<line"#))
         #expect(rendered.contains(#"x1="0""#))
         #expect(rendered.contains(#"y1="0""#))
@@ -87,7 +87,7 @@ struct BasicShapesTests {
             .stroke("purple")
             .strokeWidth(1)
 
-        let rendered = svg.render()
+        let rendered = String(svg)
         #expect(rendered.contains(#"<polygon"#))
         #expect(rendered.contains(#"points="100,10 40,198 190,78 10,78 160,198""#))
         #expect(rendered.contains(#"fill="lime""#))
@@ -103,7 +103,7 @@ struct BasicShapesTests {
             .stroke("black")
             .strokeWidth(3)
 
-        let rendered = svg.render()
+        let rendered = String(svg)
         #expect(rendered.contains(#"<polyline"#))
         #expect(rendered.contains(#"points="20,20 40,25 60,40 80,120 120,140 200,180""#))
         #expect(rendered.contains(#"fill="none""#))
