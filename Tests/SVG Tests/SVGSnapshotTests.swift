@@ -7,8 +7,8 @@
 
 import InlineSnapshotTesting
 import SVG
-import SVG_TestSupport
 import SVG_Standard
+import SVG_TestSupport
 import Testing
 
 @MainActor

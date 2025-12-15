@@ -11,14 +11,14 @@ import Testing
 
 @Suite("Container Elements Tests")
 struct ContainerTests {
-    
+
     @Test("SVG root element renders correctly")
     func svgRootRendering() {
         let svgElement = svg(width: 200, height: 100) {
             circle(cx: 50, cy: 50, r: 40)
                 .fill("red")
         }
-        
+
         let rendered = String(svgElement)
         #expect(rendered.contains(#"<svg"#))
         #expect(rendered.contains(#"width="200""#))
@@ -26,18 +26,18 @@ struct ContainerTests {
         #expect(rendered.contains(#"<circle"#))
         #expect(rendered.contains(#"</svg>"#))
     }
-    
+
     @Test("Group element renders correctly")
     func groupRendering() {
         let svgElement = g()
             .translate(x: 50, y: 50)
-        
+
         let rendered = String(svgElement)
         #expect(rendered.contains(#"<g"#))
         #expect(rendered.contains(#"transform="translate(50"#))
         #expect(rendered.contains(#"</g>"#))
     }
-    
+
     @Test("Group with nested content renders correctly")
     func groupWithNestedContent() {
         let svgElement = g {
@@ -46,25 +46,25 @@ struct ContainerTests {
             rect(x: -10, y: -10, width: 20, height: 20)
                 .fill("white")
         }
-        
+
         let rendered = String(svgElement)
         #expect(rendered.contains(#"<g"#))
         #expect(rendered.contains(#"<circle"#))
         #expect(rendered.contains(#"<rect"#))
         #expect(rendered.contains(#"</g>"#))
     }
-    
+
     @Test("Nested groups render correctly")
     func nestedGroupsRendering() {
         let svgElement = svg(width: 300, height: 200) {
             g()
                 .transform("scale(2)")
         }
-        
+
         let rendered = String(svgElement)
         #expect(rendered.contains(#"transform="scale(2)""#))
     }
-    
+
     @Test("Defs element renders correctly")
     func defsRendering() {
         let svgElement = svg {
@@ -77,7 +77,7 @@ struct ContainerTests {
             circle(cx: 50, cy: 50, r: 40)
                 .fill("url(#myGradient)")
         }
-        
+
         let rendered = String(svgElement)
         #expect(rendered.contains(#"<defs>"#))
         #expect(rendered.contains(#"<linearGradient"#))
@@ -86,19 +86,22 @@ struct ContainerTests {
         #expect(rendered.contains(#"</defs>"#))
         #expect(rendered.contains(#"fill="url(#myGradient)""#))
     }
-    
+
     @Test("Symbol and use elements render correctly")
     func symbolAndUseRendering() {
         let svgElement = svg {
             defs {
-                symbol(id: "mySymbol", viewBox: SVG_Standard.Types.ViewBox(minX: 0, minY: 0, width: 100, height: 100)) {
+                symbol(
+                    id: "mySymbol",
+                    viewBox: SVG_Standard.Types.ViewBox(minX: 0, minY: 0, width: 100, height: 100)
+                ) {
                     circle(cx: 50, cy: 50, r: 40)
                         .fill("green")
                 }
             }
             use(href: "#mySymbol", x: 10, y: 10, width: 100, height: 100)
         }
-        
+
         let rendered = String(svgElement)
         #expect(rendered.contains("<symbol"))
         #expect(rendered.contains("id=\"mySymbol\""))
