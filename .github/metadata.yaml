@@ -2,7 +2,7 @@
 # Triaged by AI-assisted bulk pass (2026-04-29).
 description: "A declarative, result-builder-based W3C SVG 2 document builder and renderer for Swift."
 topics:
-  - foundations
+  - compositions
   - svg
 homepage: "https://swift-institute.org"
 readme:

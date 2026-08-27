@@ -30,9 +30,9 @@ let package = Package(
         .library(name: .svg, targets: [.svg])
     ],
     dependencies: [
-        .package(url: "https://github.com/swift-foundations/swift-svg-render.git", branch: "main"),
+        .package(url: "https://github.com/swift-compositions/swift-svg-render.git", branch: "main"),
         .package(
-            url: "https://github.com/swift-primitives/swift-dimension-primitives.git",
+            url: "https://github.com/swift-molecules/swift-dimension.git",
             branch: "main"
         ),
     ],
@@ -48,8 +48,8 @@ let package = Package(
             dependencies: [
                 .svg,
                 .product(
-                    name: "Dimension Primitives Test Support",
-                    package: "swift-dimension-primitives"
+                    name: "Dimension Test Support",
+                    package: "swift-dimension"
                 ),
             ],
 

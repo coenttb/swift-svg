@@ -45,7 +45,7 @@ let markup = String(badge)  // "<svg width=\"200\" height=\"200\">…</svg>"
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/swift-foundations/swift-svg.git", branch: "main")
+    .package(url: "https://github.com/swift-compositions/swift-svg.git", branch: "main")
 ]
 ```
 
