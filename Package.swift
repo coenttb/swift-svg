@@ -2,21 +2,6 @@
 
 import PackageDescription
 
-extension String {
-    static let svg: Self = "SVG"
-    var tests: Self { self + " Tests" }
-}
-
-extension Target.Dependency {
-    static var svg: Self { .target(name: .svg) }
-}
-
-extension Target.Dependency {
-    static var rendering: Self {
-        .product(name: "SVG Rendering", package: "swift-svg-render")
-    }
-}
-
 let package = Package(
     name: "swift-svg",
     platforms: [
@@ -27,7 +12,7 @@ let package = Package(
         .visionOS(.v27),
     ],
     products: [
-        .library(name: .svg, targets: [.svg])
+        .library(name: "SVG", targets: ["SVG"])
     ],
     dependencies: [
         .package(url: "https://github.com/swift-compositions/swift-svg-render.git", branch: "main"),
@@ -38,15 +23,15 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: .svg,
+            name: "SVG",
             dependencies: [
-                .rendering
+                .product(name: "SVG Rendering", package: "swift-svg-render")
             ]
         ),
         .testTarget(
-            name: .svg.tests,
+            name: "SVG Tests",
             dependencies: [
-                .svg,
+                .target(name: "SVG"),
                 .product(
                     name: "Dimension Test Support",
                     package: "swift-dimension"
